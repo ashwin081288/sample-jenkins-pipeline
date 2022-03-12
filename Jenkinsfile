@@ -37,21 +37,6 @@ pipeline {
                 echo 'Checkout'
             }
         }
-        stage("build & SonarQube analysis") {
-            agent any
-            steps {
-              withSonarQubeEnv('My SonarQube Server') {
-                echo 'mvn clean package sonar:sonar'
-              }
-            }
-        }
-        stage("Quality Gate") {
-            steps {
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-              }
-            }
-        }
         stage('deployed') {
             steps {
                 echo 'sct'
