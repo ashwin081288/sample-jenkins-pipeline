@@ -27,31 +27,31 @@ pipeline {
             }
         }
         stage('Checkout') {
-        when {
-            allOf {
-                not { changeset pattern: "Jenkinsfile" }
-                branch 'master'
-            }    
+            when {
+                allOf {
+                    not { changeset pattern: "Jenkinsfile" }
+                    branch 'master'
+                }    
+            }
+            steps {
+                echo 'Checkout'
+            }
         }
-        steps {
-            echo 'Checkout'
-        }
-    }
-     stage("build & SonarQube analysis") {
+        stage("build & SonarQube analysis") {
             agent any
             steps {
               withSonarQubeEnv('My SonarQube Server') {
                 sh 'mvn clean package sonar:sonar'
               }
             }
-          }
-          stage("Quality Gate") {
+        }
+        stage("Quality Gate") {
             steps {
               timeout(time: 1, unit: 'HOURS') {
                 waitForQualityGate abortPipeline: true
               }
             }
-          }
+        }
         stage('deployed') {
             steps {
                 echo 'sct'
