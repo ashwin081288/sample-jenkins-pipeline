@@ -47,5 +47,10 @@ pipeline {
                 echo 'sct'
             }
         }
+        stage('Prod') {
+            steps {
+                echo 'sct'
+            }
+        }
     }
 }
