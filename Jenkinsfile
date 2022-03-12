@@ -34,7 +34,7 @@ pipeline {
             }    
         }
         steps {
-            // Your steps ...
+            echo 'Checkout'
         }
     }
         stage('sonar check') {
