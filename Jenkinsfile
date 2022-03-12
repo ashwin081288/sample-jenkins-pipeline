@@ -21,7 +21,12 @@ pipeline {
                 echo 'Mave Build'
             }
         }
-        stage('sct') {
+        stage('build') {
+            steps {
+                echo 'sct'
+            }
+        }
+        stage('deployed') {
             steps {
                 echo 'sct'
             }
