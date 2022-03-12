@@ -26,6 +26,17 @@ pipeline {
                 echo 'sct'
             }
         }
+        stage('Checkout') {
+        when {
+            allOf {
+                not { changeset pattern: "Jenkinsfile" }
+                branch 'master'
+            }    
+        }
+        steps {
+            // Your steps ...
+        }
+    }
         stage('sonar check') {
             steps {
                 echo 'sct'
