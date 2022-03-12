@@ -41,7 +41,7 @@ pipeline {
             agent any
             steps {
               withSonarQubeEnv('My SonarQube Server') {
-                exe 'mvn clean package sonar:sonar'
+                echo 'mvn clean package sonar:sonar'
               }
             }
         }
