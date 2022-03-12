@@ -26,6 +26,11 @@ pipeline {
                 echo 'sct'
             }
         }
+        stage('sonar check') {
+            steps {
+                echo 'sct'
+            }
+        }
         stage('deployed') {
             steps {
                 echo 'sct'
