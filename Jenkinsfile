@@ -4,6 +4,17 @@ pipeline{
         stage("Pipeline Startup"){
             steps{
                 echo "========Pipeline Startup========"
+            
+            }
+        }
+        stage('pre packages pipeline') {
+            steps {
+                echo 'Pre Package Pipeline'
+            }
+        }
+        stage('Docker File') {
+            steps {
+                echo 'Pre Package Pipeline'
                 agent{
                     dockerfile {
                         filename 'Dockerfile.build'
@@ -15,5 +26,6 @@ pipeline{
                 }
             }
         }
+
     }
 }
