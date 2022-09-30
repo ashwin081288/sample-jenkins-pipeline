@@ -1,50 +1,14 @@
-pipeline {
+pipeline{
     agent any
-    stages {
-        stage('pipeline startup') {
-            steps {
-                echo 'Pipeline Start up'
-            }
-        }
-        stage('pre packages pipeline') {
-            steps {
-                echo 'Pre Package Pipeline'
-            }
-        }
-        stage('package analysis') {
-            steps {
-                echo 'Analysis'
-            }
-        }
-        stage('maven') {
-            steps {
-                echo 'Mave Build'
-            }
-        }
-        stage('build') {
-            steps {
-                echo 'sct'
-            }
-        }
-        stage('Checkout') {
-            when {
-                allOf {
-                    not { changeset pattern: "Jenkinsfile" }
-                    branch 'master'
-                }    
-            }
-            steps {
-                echo 'Checkout'
-            }
-        }
-        stage('deployed') {
-            steps {
-                echo 'sct'
-            }
-        }
-        stage('Prod') {
-            steps {
-                echo 'sct'
+    stages{
+        stage("Pipeline Startup"){
+            steps{
+                echo "========Pipeline Startup========"
+                agent{
+                    docker{
+                        images 'ashwin081288/department-service:tagname'
+                    }
+                }
             }
         }
     }
