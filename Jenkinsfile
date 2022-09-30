@@ -5,8 +5,12 @@ pipeline{
             steps{
                 echo "========Pipeline Startup========"
                 agent{
-                    docker{
-                        images 'ashwin081288/department-service:tagname'
+                    dockerfile {
+                        filename 'Dockerfile.build'
+                        dir 'build'
+                        label 'my-defined-label'
+                        additionalBuildArgs  '--build-arg version=1.0.0'
+                        args '-v /tmp:/tmp'
                     }
                 }
             }
