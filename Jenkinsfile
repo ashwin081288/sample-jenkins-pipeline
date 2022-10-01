@@ -9,12 +9,12 @@ pipeline{
         }
         stage('pre packages pipeline') {
             steps {
-                echo 'Pre Package Pipeline'
+                echo '========Pre Package Pipeline========'
             }
         }
         stage('Docker File') {
             steps {
-                echo 'Pre Package Pipeline'
+                echo '========Docker File========'
                 agent{
                     dockerfile {
                         filename 'Dockerfile.build'
